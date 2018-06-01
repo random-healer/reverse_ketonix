@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ketonix</groupId>
+    <artifactId>KetonixUSB</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <build>
+        <plugins>
+	<plugin>
+	    <artifactId>maven-jar-plugin</artifactId>
+	    <version>2.4</version>
+	    <configuration>
+	     <archive>
+	      <manifest>
+	       <mainClass>com.ketonix.ketonixpro.KSync</mainClass>
+	      </manifest>
+	     </archive>
+	    </configuration>
+	   </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <!-- here the phase you need -->
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/resources</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>src/main/java/resources</directory>
+                  <filtering>false</filtering>
+                </resource>
+              </resources> 
+            </configuration>            
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    </build>
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jdesktop</groupId>
+            <artifactId>beansbinding</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>DateChooser</groupId>
+            <artifactId>datechooser</artifactId>
+            <scope>system</scope>
+            <version>1</version>
+            <systemPath>${basedir}/Libraries/DateChooser.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>DateChooser</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- <maven.compiler.source>1.7</maven.compiler.source> -->
+        <!-- <maven.compiler.target>1.7</maven.compiler.target> -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <name>Ketonix USB</name>
+    <description>Software for capturing data from a Ketonix USB</description>
+</project>
